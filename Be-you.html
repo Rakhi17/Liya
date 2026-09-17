@@ -3,41 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Note for Liya 💖</title>
+    <title>For Liya 🌸</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
-            background-color: #fce4ec; /* Updated background pink */
-            background-image: radial-gradient(#f8bbd0 1px, transparent 1px);
-            background-size: 20px 20px;
+            background: linear-gradient(135deg, #ffe6ea 0%, #ffc0cb 100%);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
             padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Falling Cherry Blossom Petals */
+        .petal {
+            position: absolute;
+            background-color: #ffb7c5;
+            border-radius: 150% 0 150% 0;
+            opacity: 0.75;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg) scale(0.8);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(105vh) rotate(360deg) scale(1.2);
+                opacity: 0.2;
+            }
         }
 
         .container {
             width: 100%;
-            max-width: 450px;
-            background: #ffffff;
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.15); /* Softer pink shadow */
-            padding: 30px 25px;
+            max-width: 440px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 28px;
+            box-shadow: 0 20px 40px rgba(220, 90, 120, 0.2);
+            padding: 32px 26px;
             text-align: center;
             position: relative;
-            border: 2px solid #f8bbd0;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.8);
         }
 
         .slide {
             display: none;
-            animation: fadeIn 0.6s ease-in-out;
+            animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .slide.active {
@@ -45,46 +70,54 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(12px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .icon {
-            font-size: 50px;
-            margin-bottom: 15px;
+            font-size: 52px;
+            margin-bottom: 12px;
+            display: inline-block;
         }
 
         h1 {
-            color: #c2185b; /* New main heading pink */
-            font-size: 26px;
-            margin-bottom: 15px;
+            color: #d81b60;
+            font-size: 27px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 14px;
         }
 
         p {
-            color: #555;
+            color: #4a4a4a;
             font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            line-height: 1.55;
+            font-weight: 400;
+            margin-bottom: 18px;
         }
 
-        .sweet-card {
-            background-color: #fff0f5; /* Updated card color */
-            border-radius: 16px;
-            padding: 15px;
-            margin: 15px 0;
-            border-left: 4px solid #e91e63; /* New accent pink */
+        .card {
+            background: #fff0f4;
+            border-radius: 18px;
+            padding: 16px;
+            margin: 16px 0;
+            border-left: 4px solid #ff4d6d;
+            box-shadow: 0 2px 8px rgba(255, 77, 109, 0.08);
+        }
+
+        .card p {
+            margin-bottom: 0;
+            color: #2c2c2e;
+            font-size: 15px;
         }
 
         .img-container {
             width: 100%;
-            height: 180px;
-            border-radius: 16px;
+            height: 190px;
+            border-radius: 18px;
             overflow: hidden;
-            margin-bottom: 15px;
-            background-color: #f8bbd0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
         .img-container img {
@@ -96,54 +129,61 @@
         .nav-buttons {
             display: flex;
             justify-content: space-between;
-            margin-top: 25px;
-            gap: 10px;
+            margin-top: 24px;
+            gap: 12px;
         }
 
         button {
             flex: 1;
-            padding: 12px 20px;
+            padding: 14px 20px;
             border: none;
             border-radius: 50px;
             font-size: 15px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .btn-next {
-            background-color: #e91e63; /* New button pink */
-            color: white;
-            box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
+            background-color: #ff4d6d;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(255, 77, 109, 0.35);
         }
 
-        .btn-next:hover {
-            background-color: #c2185b;
+        .btn-next:active {
+            transform: scale(0.97);
+            background-color: #e03a5a;
         }
 
         .btn-prev {
-            background-color: #f8bbd0;
-            color: #555;
+            background-color: #f1f1f7;
+            color: #636366;
+        }
+
+        .btn-prev:active {
+            transform: scale(0.97);
+            background-color: #e5e5ea;
         }
 
         .dots {
             display: flex;
             justify-content: center;
             gap: 8px;
-            margin-top: 20px;
+            margin-top: 22px;
         }
 
         .dot {
-            width: 10px;
-            height: 10px;
-            background-color: #f8bbd0;
+            width: 8px;
+            height: 8px;
+            background-color: #ffd1dc;
             border-radius: 50%;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .dot.active {
-            background-color: #e91e63;
-            width: 22px;
+            background-color: #ff4d6d;
+            width: 20px;
             border-radius: 10px;
         }
     </style>
@@ -154,27 +194,26 @@
 
     <!-- Slide 1 -->
     <div class="slide active">
-        <div class="icon">💌</div>
+        <div class="icon">🌸</div>
         <h1>Hey Liya...</h1>
-        <div class="sweet-card">
-            <p>I know I messed up, and I wanted to create a new, extra sweet space just for you.</p>
+        <div class="card">
+            <p>I built a little space just for you because you mean the absolute world to me.</p>
         </div>
-        <p>I have a lot on my heart...</p>
+        <p>I have a confession to make...</p>
         <div class="nav-buttons">
-            <button class="btn-next" style="width:100%" onclick="nextSlide()">Tap to open my heart 🍓🍫</button>
+            <button class="btn-next" style="width:100%" onclick="nextSlide()">Tap to open ❤️</button>
         </div>
     </div>
 
     <!-- Slide 2 -->
     <div class="slide">
         <div class="img-container">
-            <!-- Specific new image of a mixed bouquet of roses, cake, and chocolates -->
-            <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=800&auto=format&fit=crop" alt="A collection of pink and red roses, strawberry cake, and chocolates for Liya">
+            <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=800&auto=format&fit=crop" alt="Pink Roses, Strawberry Cake & Chocolates">
         </div>
-        <h1>I'm Truly Sorry, Liya 🌹🎂</h1>
-        <p>I hate knowing that my words made you feel you had to suppress your expressiveness and your beautiful feelings.</p>
-        <div class="sweet-card">
-            <p>I understand now, and I am truly, truly sorry from the bottom of my heart.</p>
+        <h1>I'm So Sorry, Liya 🌹</h1>
+        <p>I hate knowing that I made you suppress your natural expressiveness and sweet feelings on Instagram.</p>
+        <div class="card">
+            <p>I take full responsibility for making you feel hurt. I am truly sorry from the bottom of my heart.</p>
         </div>
         <div class="nav-buttons">
             <button class="btn-prev" onclick="prevSlide()">Back</button>
@@ -185,12 +224,12 @@
     <!-- Slide 3 -->
     <div class="slide">
         <div class="icon">✨</div>
-        <h1>My New Promises to You</h1>
-        <p>You mean the world to me, Liya, and I want to celebrate you, not change you.</p>
-        <div class="sweet-card">
-            <p>🌷 I promise to listen better to your feelings.<br>
-               🌷 I promise to value your public words.<br>
-               🌷 I promise to treasure your expressiveness.</p>
+        <h1>My Promise to You</h1>
+        <p>Your love and open expressiveness are precious, and I never want to dim that light.</p>
+        <div class="card">
+            <p>🍓 I promise to cherish your expressive love.<br>
+               🍫 I promise to communicate with warmth always.<br>
+               🌹 I promise to celebrate us together, openly.</p>
         </div>
         <div class="nav-buttons">
             <button class="btn-prev" onclick="prevSlide()">Back</button>
@@ -200,15 +239,15 @@
 
     <!-- Slide 4 -->
     <div class="slide">
-        <div class="icon">🎀</div>
-        <h1>A Sweet Offer of Peace?</h1>
-        <p>I love you so much, Liya! Let me make it up to you today...</p>
-        <div class="sweet-card">
-            <p><strong>A bouquet of pink roses, your favorite strawberry cake, and all the chocolates? Please say yes!</strong></p>
+        <div class="icon">🍰💖</div>
+        <h1>Will You Forgive Me?</h1>
+        <p>Can I please make it up to you today with a bouquet of pink & red roses, fresh strawberry cake, and your favorite chocolates?</p>
+        <div class="card">
+            <p><strong>I love you so much, Liya! ❤️</strong></p>
         </div>
         <div class="nav-buttons">
             <button class="btn-prev" onclick="prevSlide()">Back</button>
-            <button class="btn-next" onclick="alert('Yay! ❤️ I love you with all my heart!')">I Forgive You 💕🍓🍫</button>
+            <button class="btn-next" onclick="alert('Yay! ❤️ I love you so much, Liya! 🍓🌹')">I Forgive You 💕</button>
         </div>
     </div>
 
@@ -248,6 +287,28 @@
             showSlide(currentSlide);
         }
     }
+
+    // Falling Cherry Blossom Petals Logic
+    function createPetal() {
+        const petal = document.createElement('div');
+        petal.classList.add('petal');
+        
+        const size = Math.random() * 12 + 10;
+        petal.style.width = `${size}px`;
+        petal.style.height = `${size * 1.4}px`;
+        petal.style.left = `${Math.random() * 100}vw`;
+        
+        const duration = Math.random() * 4 + 5;
+        petal.style.animationDuration = `${duration}s`;
+        
+        document.body.appendChild(petal);
+
+        setTimeout(() => {
+            petal.remove();
+        }, duration * 1000);
+    }
+
+    setInterval(createPetal, 300);
 </script>
 
 </body>
